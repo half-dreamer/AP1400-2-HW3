@@ -1,9 +1,8 @@
 #include <algorithm>
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
-#include "bst.h"
+#include "../include/bst.h"
 
-/*
 TEST(HW3Test, TEST1) {
 
     BST::Node left{10, nullptr, nullptr};
@@ -19,6 +18,7 @@ TEST(HW3Test, TEST2) {
     BST::Node right{10, nullptr, nullptr};
     BST::Node node{10, &left, &right};
     BST::Node copy{node};
+    cout << "3 passed" << endl;
     EXPECT_EQ(copy.value, node.value);
     EXPECT_EQ(copy.left, node.left);
     EXPECT_EQ(copy.right, node.right);
@@ -46,7 +46,6 @@ TEST(HW3Test, TEST4) {
     std::cout << node << std::endl;
     std::cout << std::string(80, '*') << std::endl;
 }
-
 TEST(HW3Test, TEST5) {
     BST::Node node{5, nullptr, nullptr};
 
@@ -73,12 +72,10 @@ TEST(HW3Test, TEST5) {
     EXPECT_FALSE(3 == node);
 
 }
-
 TEST(HW3Test, TEST6) {
     BST bst{};
     EXPECT_EQ(bst.get_root(), nullptr);
 }
-
 TEST(HW3Test, TEST7) {
     BST bst{};
     bst.add_node(10);
@@ -103,7 +100,6 @@ TEST(HW3Test, TEST8) {
     EXPECT_EQ(bst.get_root()->left->right->value, 15);
     EXPECT_EQ(bst.get_root()->right->right->value, 53);
 }
-
 TEST(HW3Test, TEST9) {
     BST bst{};
     bst.add_node(25);
@@ -133,7 +129,6 @@ TEST(HW3Test, TEST10) {
 
     EXPECT_EQ(bst.length(), 6);
 }
-
 TEST(HW3Test, TEST11) {
     BST bst{};
     bst.add_node(25);
@@ -174,7 +169,7 @@ TEST(HW3Test, TEST13) {
     BST::Node** node{bst.find_node(11)};
     EXPECT_EQ(node, nullptr);
 }
-
+/*
 TEST(HW3Test, TEST14) {
     BST bst{};
     bst.add_node(25);
@@ -191,7 +186,6 @@ TEST(HW3Test, TEST14) {
     EXPECT_EQ((*node)->left->value, 7);
     EXPECT_EQ((*node)->right->value, 15);
 }
-
 TEST(HW3Test, TEST15) {
     BST bst{};
     bst.add_node(25);
@@ -394,7 +388,7 @@ TEST(HW3Test, TEST24) {
     EXPECT_EQ(bst.length(), copy.length());
     EXPECT_EQ(bst.get_root()->right->value, copy.get_root()->right->value);
 }
-
+*/
 TEST(HW3Test, TEST25) {
     BST bst{};
     bst.add_node(5);
@@ -457,14 +451,12 @@ TEST(HW3Test, TEST28) {
     EXPECT_EQ(adddress_of_root, move.get_root());
     EXPECT_EQ(test_value, move.get_root()->left->right->value);
 }
-
 TEST(HW3Test, TEST29) {
     BST bst1{5, 1, 10, 2, 8, 50, 4, 60};
     BST bst2{3, 2, 100, 20, 8, 50, 4, 60, 44, 23};
     EXPECT_EQ((*bst1.find_successor(5))->value, 4);
     EXPECT_EQ(bst2.length(), 10);
 }
-
 TEST(HW3Test, TEST30) {
     BST bst{5, 1, 10, 2, 8, 50, 4, 60};
     BST bst2{++bst};
@@ -476,21 +468,14 @@ TEST(HW3Test, TEST30) {
     EXPECT_EQ(bst2.get_root()->right->right->right->value, 61);
 
 }
-
 TEST(HW3Test, TEST31) {
     BST bst1{5, 1, 10, 2, 8, 50, 4, 60};
     BST bst2{bst1++};
-
     std::vector<int> values1;
     bst1.bfs([&values1](BST::Node*& node){values1.push_back(node->value);});
-
     std::vector<int> values2;
     bst2.bfs([&values2](BST::Node*& node){values2.push_back(node->value);});
 
     for(size_t i{}; i < values1.size(); i++)
         EXPECT_EQ(values2[i], values1[i]-1);    
 }
-*/
-
-
-
